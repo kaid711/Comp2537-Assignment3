@@ -3,7 +3,7 @@ let clickCount = 0;
 let matchesMade = 0;
 let totalTime = 60;
 let timer;
-const backImage = "img/back.webp";
+const backImage = "public/img/back.webp";
 
 function getDifficultyValue() {
   const level = $("#difficulty").val();
