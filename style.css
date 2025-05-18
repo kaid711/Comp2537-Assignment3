@@ -1,42 +1,212 @@
+/* Global styles */
 body {
-  margin: 0px;
+  margin: 0;
+  font-family: 'Segoe UI', sans-serif;
+  background-color: #f9f9f9;
+  color: #222;
+  padding: 2rem;
 }
 
-#game_grid {
-  border: 2px tomato solid;
-  width: 600px;
-  height: 400px;
-  margin: auto;
+body.dark {
+  background-color: #1e1e1e;
+  color: white;
+}
+
+h1 {
+  text-align: center;
+  margin-bottom: 1rem;
+}
+
+/* Controls + status section */
+#controls,
+#status {
   display: flex;
+  justify-content: center;
+  align-items: center;
   flex-wrap: wrap;
+  gap: 1rem;
+  margin-bottom: 1rem;
 }
 
+button {
+  padding: 0.4rem 1rem;
+  background-color: #ffcc01;
+  border: none;
+  border-radius: 5px;
+  font-weight: bold;
+  cursor: pointer;
+}
 
+button:hover {
+  background-color: #e6b800;
+}
+
+select {
+  padding: 0.3rem 0.6rem;
+  border-radius: 5px;
+}
+
+input[type="checkbox"] {
+  transform: scale(1.2);
+}
+
+/* Game grid container */
+#game_grid {
+  display: grid;
+  gap: 10px;
+  justify-content: center;
+  margin: 0 auto;
+  padding: 1rem;
+  border: 2px solid tomato;
+  width:fit-content;
+}
+
+/* Dynamic grid layouts */
+#game_grid.easy {
+  grid-template-columns: repeat(3, 100px);
+}
+#game_grid.medium {
+  grid-template-columns: repeat(4, 100px);
+}
+#game_grid.hard {
+  grid-template-columns: repeat(6, 100px);
+}
+
+/* Card styling */
 .card {
-  width: 33.3%;
+  width: 100px;
+  height: 140px;
   position: relative;
-  transition: transform 1s;
   perspective: 1000px;
   transform-style: preserve-3d;
+  transition: transform 0.6s ease;
+  cursor: pointer;
 }
 
-
-img {
-  width: 100%
-}
-
-.front_face,
-.back_face {
-  position: absolute;
-  backface-visibility: hidden;
-}
-
-
-.flip {
+.card.flip {
   transform: rotateY(180deg);
 }
 
+/* Card faces */
+.front_face,
+.back_face {
+  width: 100%;
+  height: 100%;
+  object-fit: contain;
+  position: absolute;
+  top: 0;
+  left: 0;
+  backface-visibility: hidden;
+  border-radius: 8px;
+  box-shadow: 0 4px 8px rgba(0,0,0,0.2);
+}
 
 .front_face {
   transform: rotateY(180deg);
+}
+
+/* Dark mode overrides */
+body.dark button {
+  background-color: #444;
+  color: white;
+}
+
+body.dark #game_grid {
+  border-color: white;
+}
+
+body.dark .card {
+  box-shadow: 0 0 6px #aaa;
+}
+
+/* Modal background */
+.modal {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-color: rgba(0, 0, 0, 0.6);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  z-index: 1000;
+}
+
+/* Modal content box */
+.modal-content {
+  background-color: white;
+  padding: 2rem;
+  border-radius: 12px;
+  text-align: center;
+  max-width: 300px;
+  box-shadow: 0 10px 20px rgba(0,0,0,0.3);
+  animation: fadeIn 0.4s ease;
+}
+
+.modal-content h2 {
+  margin-top: 0;
+}
+
+.modal-content button {
+  margin-top: 1rem;
+  padding: 0.5rem 1rem;
+  background-color: #ffcc01;
+  border: none;
+  border-radius: 8px;
+  font-weight: bold;
+  cursor: pointer;
+}
+
+.modal-content button:hover {
+  background-color: #e6b800;
+}
+
+.hidden {
+  display: none;
+}
+
+/* Animation */
+@keyframes fadeIn {
+  from { opacity: 0; transform: scale(0.8); }
+  to   { opacity: 1; transform: scale(1); }
+}
+
+#belowGrid {
+  text-align: center;
+  margin-top: 1rem;
+}
+
+#powerUpBtn {
+  padding: 0.5rem 1rem;
+  background-color: #ffcc01;
+  border: none;
+  border-radius: 8px;
+  font-weight: bold;
+  cursor: pointer;
+}
+
+#powerUpBtn:hover {
+  background-color: #e6b800;
+}
+
+body.dark #powerUpBtn {
+  background-color: #444;
+  color: white;
+}
+
+/* === DARK MODE MODAL FIXES === */
+
+body.dark .modal-content {
+  background-color: #2c2c2c;
+  color: #f0f0f0;
+}
+
+body.dark .modal-content button {
+  background-color: #444;
+  color: white;
+}
+
+body.dark .modal-content button:hover {
+  background-color: #666;
 }

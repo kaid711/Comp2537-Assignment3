@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Pokémon Memory Game</title>
+  <link rel="stylesheet" href="../style.css" />
+  <!-- jQuery CDN -->
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+  <script defer src="../index.js"></script>
+</head>
+
+<body>
+  <h1>Pokémon Memory Game</h1>
+
+  <div id="controls">
+    <button id="startBtn">Start Game</button>
+    <button id="resetBtn">Reset Game</button>
+
+    <label for="difficulty">Difficulty:</label>
+    <select id="difficulty">
+      <option value="easy" selected>Easy (3 pairs)</option>
+      <option value="medium">Medium (6 pairs)</option>
+      <option value="hard">Hard (9 pairs)</option>
+    </select>
+
+    <label>
+      <input type="checkbox" id="themeToggle" />
+      Dark Mode
+    </label>
+  </div>
+
+  <!-- Custom modal for game result -->
+  <div id="gameModal" class="modal hidden">
+    <div class="modal-content">
+      <h2 id="modalTitle">🎉 You win!</h2>
+      <p id="modalMessage">You matched all the cards!</p>
+      <button id="modalCloseBtn">Play Again</button>
+    </div>
+  </div>
+
+  <div id="status">
+    <p>Clicks: <span id="clickCount">0</span></p>
+    <p>Matches: <span id="matchesMade">0</span> / <span id="totalPairs">0</span></p>
+    <p>Time left: <span id="timeLeft">60</span>s</p>
+  </div>
+
+  <div id="game_grid"></div>
+  
+  <div id="belowGrid">
+    <button id="powerUpBtn">Power Up</button>
+  </div>
+</body>
+</html>
